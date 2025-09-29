@@ -105,6 +105,7 @@ h1 {
     line-height: 1.2;
     font-family: var(--font-serif);
     font-weight: normal;
+    color: red;
 }
 
 h2 {
@@ -131,4 +132,7 @@ p {
 	margin-bottom: 12px;
     font-family: var(--font-sans);
 
+}
+a{
+    color: brown;
 }
