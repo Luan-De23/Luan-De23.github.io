@@ -1,6 +1,12 @@
 body{
-    background-color: white;
-    font-family: var(--font-sans);
+    background-image: url(../exercises/assets/img/Space.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+        
 }
 
+div{
+    
+    background-color: rgb(rgba(0, 0, 0, 4), black);
+}
 
