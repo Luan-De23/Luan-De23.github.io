@@ -111,6 +111,10 @@ h2 {
     margin-bottom: 6px;
 }
 
+h1{
+    color: white;
+}
+
 p {
 	font-size: var(--fs-base);
     line-height: 1.7;
