@@ -19,30 +19,240 @@
         gtag('config', 'G-GVNZWP3K04');
     </script>
 
+
+
     <!-- Styles for Cookie Consent Popup Message  -->
     <link href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" rel="stylesheet">
 
 </head>
 <body>
-    <div>
-        <header>
-            <h1>
-                Hi, I'm Luan
-            </h1>
-            <h2>
-                Web/ UI designer
-            </h2>
-        </header>
-        <p>
-            I created this website to showcase some of my recent web desing work.
-        </p>
-        <p><a href="exercises/page-1.html">A Tale of Two Cities</a></p>
-        <p><a href="exercises/page-2.html">Purple Rain</a></p>
-        <p><a href="exercises/page-3.html">Web Page with Sections</a></p>
-        <p><a href="exercises/page-4.html">Vincent van Gogh</a></p> 
-        <p><a href="exercises/page-5.html">Irish Tourism</a></p>
-        <p><a href="exercises/hero-video.html">Hero block with background video</a></p>
-    </div>
+
+    <canvas id="starfield" aria-hidden="true"></canvas>
+
+
+    <main class="site-content">
+        <div class="card">
+            <header>
+                <h1>
+                    Hi, I'm Luan
+                </h1>
+                <h2>
+                    Web/ UI designer
+                </h2>
+            </header>
+            <p>
+                I created this website to showcase some of my recent web desing work.
+            </p>
+            <p><a href="exercises/page-1.html">A Tale of Two Cities</a></p>
+            <p><a href="exercises/page-2.html">Purple Rain</a></p>
+            <p><a href="exercises/page-3.html">Web Page with Sections</a></p>
+            <p><a href="exercises/page-4.html">Vincent van Gogh</a></p>
+            <p><a href="exercises/page-5.html">Irish Tourism</a></p>
+        </div>
+    </main>
+
+    <!--Testing a background-->
+    <script>
+    /* Configurações (personalize) */
+    const CONFIG = {
+      starCount: 400,        // número de estrelas
+      starSizeMin: 0.3,
+      starSizeMax: 1.6,
+      twinkleSpeedMin: 0.002,
+      twinkleSpeedMax: 0.01,
+      twinkleRange: 0.7,    // variação máxima do brilho
+      parallaxIntensity: 0.04, // quanto o movimento do mouse desloca estrelas
+      shootingStarChancePerSec: 0.06 // probabilidade por segundo de aparecer uma estrela cadente
+    };
+
+    const canvas = document.getElementById('starfield');
+    const ctx = canvas.getContext('2d', { alpha: true });
+    let width = 0, height = 0, dpi = window.devicePixelRatio || 1;
+    let stars = [];
+    let shootingStars = [];
+    let mouseX = 0.5, mouseY = 0.5;
+    let lastTime = performance.now();
+
+    function resize() {
+      dpi = window.devicePixelRatio || 1;
+      width = Math.max(300, window.innerWidth);
+      height = Math.max(200, window.innerHeight);
+      canvas.width = Math.floor(width * dpi);
+      canvas.height = Math.floor(height * dpi);
+      canvas.style.width = width + 'px';
+      canvas.style.height = height + 'px';
+      ctx.setTransform(dpi, 0, 0, dpi, 0, 0);
+    }
+
+    function rand(min, max) {
+      return Math.random() * (max - min) + min;
+    }
+
+    function createStars() {
+      stars = [];
+      for (let i = 0; i < CONFIG.starCount; i++) {
+        const x = Math.random() * width;
+        const y = Math.random() * height;
+        const r = rand(CONFIG.starSizeMin, CONFIG.starSizeMax);
+        const baseAlpha = rand(0.25, 0.95);
+        const twinkleSpeed = rand(CONFIG.twinkleSpeedMin, CONFIG.twinkleSpeedMax);
+        const twinklePhase = Math.random() * Math.PI * 2;
+        const hue = rand(200, 60); // variação sutil de cor (valor em degrees não usado diretamente, apenas demo)
+        stars.push({ x, y, r, baseAlpha, twinkleSpeed, twinklePhase, hue });
+      }
+    }
+
+    function spawnShootingStar() {
+      // cria uma estrela cadente que atravessa a tela diagonalmente
+      const startX = Math.random() * width * 0.5 + width * 0.25; // começa próximo ao centro-direita
+      const startY = -10;
+      const len = rand(200, 420);
+      const speed = rand(700, 1600); // px / sec
+      const angle = Math.PI * 0.7 + rand(-0.1, 0.1); // diagonal para baixo-esquerda
+      shootingStars.push({
+        x: startX,
+        y: startY,
+        vx: Math.cos(angle) * speed,
+        vy: Math.sin(angle) * speed,
+        length: len,
+        life: 0,
+        maxLife: (height + len) / speed + 0.5
+      });
+    }
+
+    function update(dt) {
+      // twinkle das estrelas
+      for (let s of stars) {
+        s.twinklePhase += s.twinkleSpeed * dt;
+        // opcional: leve drift
+        // s.x += Math.sin(s.twinklePhase * 0.2) * 0.02;
+      }
+
+      // atualizar estrelas cadentes
+      for (let i = shootingStars.length - 1; i >= 0; i--) {
+        const ss = shootingStars[i];
+        ss.x += ss.vx * dt;
+        ss.y += ss.vy * dt;
+        ss.life += dt;
+        if (ss.life > ss.maxLife || ss.x < -ss.length || ss.y > height + ss.length || ss.x > width + ss.length) {
+          shootingStars.splice(i, 1);
+        }
+      }
+
+      // spawn aleatório baseado em taxa por segundo
+      if (Math.random() < CONFIG.shootingStarChancePerSec * dt) spawnShootingStar();
+    }
+
+    function draw() {
+      // fundo muito sutil (mantemos o gradiente do body, aqui limpamos)
+      ctx.clearRect(0,0,width, height);
+
+      // parallax: offset conforme mouse
+      const offsetX = (mouseX - 0.5) * width * CONFIG.parallaxIntensity;
+      const offsetY = (mouseY - 0.5) * height * CONFIG.parallaxIntensity;
+
+      // desenhar cada estrela
+      for (let s of stars) {
+        const tw = (Math.sin(s.twinklePhase) * 0.5 + 0.5) * CONFIG.twinkleRange;
+        const alpha = Math.max(0, Math.min(1, s.baseAlpha * (0.6 + tw)));
+        const sx = s.x + offsetX * ((s.r / CONFIG.starSizeMax) * 0.6);
+        const sy = s.y + offsetY * ((s.r / CONFIG.starSizeMax) * 0.6);
+
+        // glow
+        const grd = ctx.createRadialGradient(sx, sy, 0, sx, sy, s.r * 4);
+        grd.addColorStop(0, `rgba(255,255,255,${alpha})`);
+        grd.addColorStop(0.3, `rgba(255,255,255,${alpha*0.6})`);
+        grd.addColorStop(1, 'rgba(255,255,255,0)');
+        ctx.fillStyle = grd;
+        ctx.beginPath();
+        ctx.arc(sx, sy, s.r * 4, 0, Math.PI * 2);
+        ctx.fill();
+
+        // centro brilhante
+        ctx.globalAlpha = alpha;
+        ctx.beginPath();
+        ctx.arc(sx, sy, s.r, 0, Math.PI * 2);
+        ctx.fillStyle = 'white';
+        ctx.fill();
+        ctx.globalAlpha = 1;
+      }
+
+      // desenhar estrelas cadentes (com rastro)
+      for (let ss of shootingStars) {
+        const x2 = ss.x - ss.vx * 0.015;
+        const y2 = ss.y - ss.vy * 0.015;
+        const grad = ctx.createLinearGradient(x2, y2, ss.x, ss.y);
+        grad.addColorStop(0, 'rgba(255,255,255,0.0)');
+        grad.addColorStop(0.5, 'rgba(255,255,255,0.7)');
+        grad.addColorStop(1, 'rgba(255,255,255,1.0)');
+
+        ctx.strokeStyle = grad;
+        ctx.lineWidth = 2.5;
+        ctx.beginPath();
+        ctx.moveTo(x2, y2);
+        ctx.lineTo(ss.x, ss.y);
+        ctx.stroke();
+
+        // pequeno ponto brilhante na frente
+        ctx.beginPath();
+        ctx.fillStyle = 'white';
+        ctx.arc(ss.x, ss.y, 2.2, 0, Math.PI*2);
+        ctx.fill();
+      }
+    }
+
+    function loop(now) {
+      const dt = Math.min(0.05, (now - lastTime) / 1000); // dt em segundos (cap pra estabilidade)
+      lastTime = now;
+      update(dt);
+      draw();
+      requestAnimationFrame(loop);
+    }
+
+    // mouse / toque para paralaxe
+    function onPointerMove(e) {
+      const rect = canvas.getBoundingClientRect();
+      const px = (e.clientX - rect.left) / rect.width;
+      const py = (e.clientY - rect.top) / rect.height;
+      mouseX = Math.min(1, Math.max(0, px));
+      mouseY = Math.min(1, Math.max(0, py));
+    }
+
+    // reduz movimento se preferências do usuário pedem isso
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) {
+      CONFIG.parallaxIntensity = 0;
+      CONFIG.shootingStarChancePerSec = 0.02;
+    }
+
+    // inits
+    function init() {
+      resize();
+      createStars();
+      lastTime = performance.now();
+      requestAnimationFrame(loop);
+    }
+
+    // eventos
+    window.addEventListener('resize', () => {
+      resize();
+      createStars(); // refaz stars para distribuir corretamente no novo tamanho
+    }, { passive: true });
+
+    window.addEventListener('pointermove', onPointerMove, { passive: true });
+
+    // inicializa após carregar
+    init();
+
+    // expor função simples para controle (opcional)
+    window.Starfield = {
+      spawnShootingStar,
+      setStarCount(n) { CONFIG.starCount = n; createStars(); },
+      setParallax(i) { CONFIG.parallaxIntensity = i; },
+      setTwinkleRange(r) { CONFIG.twinkleRange = r; }
+    };
+  
+  </script>
 
     
     <!-- JavaScript for Cookie Consent Popup Message -->
