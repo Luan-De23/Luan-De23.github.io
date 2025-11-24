@@ -2,12 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="assets/img/favicons/favicon.ico" type="image/x-icon">
-    <title>Front End Dev</title>
-    <meta name="description" content="Front End Development">
+    <title>Luan | Developer</title>
+    <meta name="description" content="Developing">
 
-    <link rel="stylesheet" href="assets/global.css">
+	<!-- Preload large image -->
+
+	<!-- Stylesheets -->
+    <link rel="stylesheet" href="https://lunevedy.com/assets/2.0/css/lunevedy.min.css" />
+    <link rel="stylesheet" href="assets/css/custom.css" />
+
+    <!-- Styles for Cookie Consent Popup Message  -->
+    <link href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" rel="stylesheet">
+
+	<!-- Google Fonts -->
+
+    <!-- Font Awesome 6 icons. Delete if not using. -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        header .col-text h2 { line-height: 1.8 }
+        .col-1 > h3 { line-height: 1.8 } 
+    </style>
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNZWP3K04"></script>
@@ -19,11 +36,6 @@
         gtag('config', 'G-GVNZWP3K04');
     </script>
 
-
-
-    <!-- Styles for Cookie Consent Popup Message  -->
-    <link href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" rel="stylesheet">
-
     <!-- Begin Inspectlet Asynchronous Code -->
     <script type="text/javascript">
       (function() {
@@ -34,238 +46,139 @@
       setTimeout(ldinsp, 0);
       })();
     </script>
-<!-- End Inspectlet Asynchronous Code -->
-<!--Luan de Almeida Gomes - 78684 -->
+    <!-- End Inspectlet Asynchronous Code -->
+
 </head>
+
+
 <body>
 
-    <canvas id="starfield" aria-hidden="true"></canvas>
+    <!-- menu and 'hero block' header -->
+    <nav class="theme-dark"><div class="container-menu">
+        <a href="#" class="brand">
+            <img src="assets/img/website-logo-sample.png" alt="Sample website logo">
+        </a>
+    
+        <div class="container-menu-links">
+    
+            <div class="nav-toggle" id="nav-toggle-btn">
+                <div class="bar-1"></div>
+                <div class="bar-2"></div>
+                <div class="bar-3"></div>
+            </div>
+    
+            <ul class="links-wrapper">
+                <li><a href="#">Home</a></li>
+                <li><a href="portfolio/index.html">Portfolio</a></li>
+                <li><a href="store/index.html">Store</a></li>
+                <li><a class="btn btn-solid btn-soft" id="btn-cta" href="contact/index.html"><span>Contact</span> <i class="fa-regular fa-envelope"></i></a></li>
+            </ul>
+        </div></div></nav>
+    
+           <!-- header starts here -->
+    
+        <header class="theme-dark cols-2-half text-center-mobile">
+    
+            <div class="col-2 col-text">
+                <div class="badge">WELCOME</div>
+                <h1>Mary Smith</h1>
+                <h2>I am an innovative front-end developer who loves to build human-friendly interfaces.</h2>
+    
+                <div class="container-btn">
+                    <a href="portfolio/index.html" class="btn btn-solid btn-soft"><span>View my work</span><i class="fa-regular fa-folder-open"></i></a><a href="contact/index.html" class="btn btn-outline btn-soft"><span>Get in touch</span><i class="fa-regular fa-envelope"></i></a>
+                </div>
+    
+            </div>
+    
+            <div class="col-2 col-visual">
+                <figure>
+                    <img src="https://lunevedy.com/ui/assets/img/1024x618-shopping-bag.jpg" alt="Placeholder image">
+                </figure>
+            </div>
+    
+        </header>
+    
+    
+        <!-- header ends here -->
+    
+    <!-- main content with sections -->
+    <main>
+
+	<!-- section starts here -->
+
+    <section class="theme-dark section-selector-1 w-1356px">
+
+		<div class="col-1 text-center w-820px">
+			<h2>Recent projects</h2>
+			<h3>Below you can see some examples of my recent work. Check out my complete portfolio of <a href="portfolio/index.html">web design</a> projects. Have a project you would like to discuss? <a href="contact/index.html">Let's make something great together!</a> </h3>
+		</div>
+
+		<!-- Begin three-column flexbox grid -->
+		<div class="flex-cols-3 cols-gap-4">
+
+			<div class="col-3">
+				<figure class="photos-zoom photos-brightness" style="overflow: hidden;">
+					<a href="portfolio/fashion/index.html"><img src="assets/img/project-fashion.jpg" alt="Fashion retailer project"></a>
+				</figure>
+				<h3>Snazzy Fashion</h3>
+				<p>A web page for a fashion retailer with a background video that plays in a continuous loop.</p>
+				<a href="portfolio/fashion/index.html" class="btn btn-solid btn-soft"><span>View project</span><i class="fas fa-arrow-right"></i></a>
+			</div>
 
 
-    <main class="site-content">
-        <div class="card">
-            <header>
-                <h1>
-                    Hi, I'm Luan
-                </h1>
-                <h2>
-                    Web/ UI designer
-                </h2>
-            </header>
-            <p>
-                I created this website to showcase some of my recent web desing work.
-            </p>
-            <p><a href="exercises/page-1.html">A Tale of Two Cities</a></p>
-            <p><a href="exercises/page-2.html">Purple Rain</a></p>
-            <p><a href="exercises/page-3.html">Web Page with Sections</a></p>
-            <p><a href="exercises/page-4.html">Vincent van Gogh</a></p>
-            <p><a href="exercises/page-5.html">Irish Tourism</a></p>
-            <p><a href="portfolio/smoothies/index.html">Smoothies Shop</a></p>
-        </div>
+			<div class="col-3">
+				<figure class="photos-zoom photos-brightness" style="overflow: hidden;">
+					<a href="portfolio/smoothies/index.html"><img src="assets/img/project-smoothie.jpg" alt="Placeholder image"></a>
+				</figure>
+				<h3>Smooth Smoothies</h3>
+				<p>A multi-column, flexbox-based page layout and hero image with a tinted overlay.</p>
+				<a href="portfolio/smoothies/index.html" class="btn btn-solid btn-soft"><span>View project</span><i class="fas fa-arrow-right"></i></a>
+			</div>
+
+            <div class="col-3">
+				<figure class="photos-zoom photos-brightness" style="overflow: hidden;">
+					<a href="portfolio/crypto-wallet/index.html"><img src="assets/img/project-crypto-wallet.jpg" alt="Placeholder image"></a>
+				</figure>
+				<h3>Crypto Wallet</h3>
+				<p> A dark-themed responsive single-page website for a fictitious crypto wallet.</p>
+				<a href="portfolio/crypto-wallet/index.html" class="btn btn-solid btn-soft"><span>View project</span><i class="fas fa-arrow-right"></i></a>
+			</div>
+
+		</div>
+		<!-- End three-column flexbox grid -->
+
+	</section>
+
+	<!-- section ends here -->
+
     </main>
 
-    <!--Testing a background-->
-    <script>
-    /* Configurações (personalize) */
-    const CONFIG = {
-      starCount: 400,        // número de estrelas
-      starSizeMin: 0.3,
-      starSizeMax: 1.6,
-      twinkleSpeedMin: 0.002,
-      twinkleSpeedMax: 0.01,
-      twinkleRange: 0.7,    // variação máxima do brilho
-      parallaxIntensity: 0.04, // quanto o movimento do mouse desloca estrelas
-      shootingStarChancePerSec: 0.06 // probabilidade por segundo de aparecer uma estrela cadente
-    };
+    <!-- footer -->
+ 
+	<footer class="theme-dark text-center-desktop text-center-mobile">
 
-    const canvas = document.getElementById('starfield');
-    const ctx = canvas.getContext('2d', { alpha: true });
-    let width = 0, height = 0, dpi = window.devicePixelRatio || 1;
-    let stars = [];
-    let shootingStars = [];
-    let mouseX = 0.5, mouseY = 0.5;
-    let lastTime = performance.now();
+		<h2>Mary Smith</h2>
 
-    function resize() {
-      dpi = window.devicePixelRatio || 1;
-      width = Math.max(300, window.innerWidth);
-      height = Math.max(200, window.innerHeight);
-      canvas.width = Math.floor(width * dpi);
-      canvas.height = Math.floor(height * dpi);
-      canvas.style.width = width + 'px';
-      canvas.style.height = height + 'px';
-      ctx.setTransform(dpi, 0, 0, dpi, 0, 0);
-    }
+		<h3>Front-end designer and developer</h3>
 
-    function rand(min, max) {
-      return Math.random() * (max - min) + min;
-    }
+		<ul class="footer-links">
+			<li><a href="#">Home</a></li>
+			<li><a href="portfolio/index.html">Portfolio</a></li>
+			<li><a href="store/index.html">Store</a></li>
+            <li><a href="contact/index.html">Contact</a></li>
+		</ul>
 
-    function createStars() {
-      stars = [];
-      for (let i = 0; i < CONFIG.starCount; i++) {
-        const x = Math.random() * width;
-        const y = Math.random() * height;
-        const r = rand(CONFIG.starSizeMin, CONFIG.starSizeMax);
-        const baseAlpha = rand(0.25, 0.95);
-        const twinkleSpeed = rand(CONFIG.twinkleSpeedMin, CONFIG.twinkleSpeedMax);
-        const twinklePhase = Math.random() * Math.PI * 2;
-        const hue = rand(200, 60); // variação sutil de cor (valor em degrees não usado diretamente, apenas demo)
-        stars.push({ x, y, r, baseAlpha, twinkleSpeed, twinklePhase, hue });
-      }
-    }
+		<ul class="footer-icons">
+			<li><a href="#" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+			<li><a href="#" target="_blank"><i class="fab fa-github-square"></i></a></li>
+		</ul>
 
-    function spawnShootingStar() {
-      // cria uma estrela cadente que atravessa a tela diagonalmente
-      const startX = Math.random() * width * 0.5 + width * 0.25; // começa próximo ao centro-direita
-      const startY = -10;
-      const len = rand(200, 420);
-      const speed = rand(700, 1600); // px / sec
-      const angle = Math.PI * 0.7 + rand(-0.1, 0.1); // diagonal para baixo-esquerda
-      shootingStars.push({
-        x: startX,
-        y: startY,
-        vx: Math.cos(angle) * speed,
-        vy: Math.sin(angle) * speed,
-        length: len,
-        life: 0,
-        maxLife: (height + len) / speed + 0.5
-      });
-    }
+		<p class="privacy"><a href="privacy.html">Privacy &amp; Legal</a></p>
 
-    function update(dt) {
-      // twinkle das estrelas
-      for (let s of stars) {
-        s.twinklePhase += s.twinkleSpeed * dt;
-        // opcional: leve drift
-        // s.x += Math.sin(s.twinklePhase * 0.2) * 0.02;
-      }
+	</footer>
 
-      // atualizar estrelas cadentes
-      for (let i = shootingStars.length - 1; i >= 0; i--) {
-        const ss = shootingStars[i];
-        ss.x += ss.vx * dt;
-        ss.y += ss.vy * dt;
-        ss.life += dt;
-        if (ss.life > ss.maxLife || ss.x < -ss.length || ss.y > height + ss.length || ss.x > width + ss.length) {
-          shootingStars.splice(i, 1);
-        }
-      }
+    <script src="https://lunevedy.com/assets/js/lunevedy.js"></script>
 
-      // spawn aleatório baseado em taxa por segundo
-      if (Math.random() < CONFIG.shootingStarChancePerSec * dt) spawnShootingStar();
-    }
-
-    function draw() {
-      // fundo muito sutil (mantemos o gradiente do body, aqui limpamos)
-      ctx.clearRect(0,0,width, height);
-
-      // parallax: offset conforme mouse
-      const offsetX = (mouseX - 0.5) * width * CONFIG.parallaxIntensity;
-      const offsetY = (mouseY - 0.5) * height * CONFIG.parallaxIntensity;
-
-      // desenhar cada estrela
-      for (let s of stars) {
-        const tw = (Math.sin(s.twinklePhase) * 0.5 + 0.5) * CONFIG.twinkleRange;
-        const alpha = Math.max(0, Math.min(1, s.baseAlpha * (0.6 + tw)));
-        const sx = s.x + offsetX * ((s.r / CONFIG.starSizeMax) * 0.6);
-        const sy = s.y + offsetY * ((s.r / CONFIG.starSizeMax) * 0.6);
-
-        // glow
-        const grd = ctx.createRadialGradient(sx, sy, 0, sx, sy, s.r * 4);
-        grd.addColorStop(0, `rgba(255,255,255,${alpha})`);
-        grd.addColorStop(0.3, `rgba(255,255,255,${alpha*0.6})`);
-        grd.addColorStop(1, 'rgba(255,255,255,0)');
-        ctx.fillStyle = grd;
-        ctx.beginPath();
-        ctx.arc(sx, sy, s.r * 4, 0, Math.PI * 2);
-        ctx.fill();
-
-        // centro brilhante
-        ctx.globalAlpha = alpha;
-        ctx.beginPath();
-        ctx.arc(sx, sy, s.r, 0, Math.PI * 2);
-        ctx.fillStyle = 'white';
-        ctx.fill();
-        ctx.globalAlpha = 1;
-      }
-
-      // desenhar estrelas cadentes (com rastro)
-      for (let ss of shootingStars) {
-        const x2 = ss.x - ss.vx * 0.015;
-        const y2 = ss.y - ss.vy * 0.015;
-        const grad = ctx.createLinearGradient(x2, y2, ss.x, ss.y);
-        grad.addColorStop(0, 'rgba(255,255,255,0.0)');
-        grad.addColorStop(0.5, 'rgba(255,255,255,0.7)');
-        grad.addColorStop(1, 'rgba(255,255,255,1.0)');
-
-        ctx.strokeStyle = grad;
-        ctx.lineWidth = 2.5;
-        ctx.beginPath();
-        ctx.moveTo(x2, y2);
-        ctx.lineTo(ss.x, ss.y);
-        ctx.stroke();
-
-        // pequeno ponto brilhante na frente
-        ctx.beginPath();
-        ctx.fillStyle = 'white';
-        ctx.arc(ss.x, ss.y, 2.2, 0, Math.PI*2);
-        ctx.fill();
-      }
-    }
-
-    function loop(now) {
-      const dt = Math.min(0.05, (now - lastTime) / 1000); // dt em segundos (cap pra estabilidade)
-      lastTime = now;
-      update(dt);
-      draw();
-      requestAnimationFrame(loop);
-    }
-
-    // mouse / toque para paralaxe
-    function onPointerMove(e) {
-      const rect = canvas.getBoundingClientRect();
-      const px = (e.clientX - rect.left) / rect.width;
-      const py = (e.clientY - rect.top) / rect.height;
-      mouseX = Math.min(1, Math.max(0, px));
-      mouseY = Math.min(1, Math.max(0, py));
-    }
-
-    // reduz movimento se preferências do usuário pedem isso
-    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduce) {
-      CONFIG.parallaxIntensity = 0;
-      CONFIG.shootingStarChancePerSec = 0.02;
-    }
-
-    // inits
-    function init() {
-      resize();
-      createStars();
-      lastTime = performance.now();
-      requestAnimationFrame(loop);
-    }
-
-    // eventos
-    window.addEventListener('resize', () => {
-      resize();
-      createStars(); // refaz stars para distribuir corretamente no novo tamanho
-    }, { passive: true });
-
-    window.addEventListener('pointermove', onPointerMove, { passive: true });
-
-    // inicializa após carregar
-    init();
-
-    // expor função simples para controle (opcional)
-    window.Starfield = {
-      spawnShootingStar,
-      setStarCount(n) { CONFIG.starCount = n; createStars(); },
-      setParallax(i) { CONFIG.parallaxIntensity = i; },
-      setTwinkleRange(r) { CONFIG.twinkleRange = r; }
-    };
-  
-  </script>
 
     
     <!-- JavaScript for Cookie Consent Popup Message -->
@@ -281,10 +194,10 @@
             }
         },
         "content": {
-            "href": "https://luan-de23.github.io/privacy.html"
+            "href": "https://username.github.io/privacy.html"
         }
     });
     </script>
-
 </body>
 </html>
+
